@@ -1,6 +1,6 @@
 pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
 plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromConfigFile(file("rn-cli-config.json")) }
 rootProject.name = 'MusicPlayer'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')

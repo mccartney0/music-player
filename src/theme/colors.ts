@@ -1,0 +1,16 @@
+export const colors = {
+  background: '#0D0D0D',
+  surface: '#1A1A1A',
+  card: '#282828',
+  cardHover: '#333333',
+  accent: '#1DB954',
+  accentDark: '#1AA34A',
+  text: '#FFFFFF',
+  textSecondary: '#B3B3B3',
+  textMuted: '#727272',
+  border: '#404040',
+  error: '#E74C3C',
+  transparent: 'transparent',
+  overlay: 'rgba(0, 0, 0, 0.7)',
+  miniPlayerBg: '#181818',
+};
