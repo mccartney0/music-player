@@ -28,6 +28,7 @@ import {State} from 'react-native-track-player';
 
 import {HomeScreen} from './screens/HomeScreen';
 import {SearchScreen} from './screens/SearchScreen';
+import {YouTubeSearchScreen} from './screens/YouTubeSearchScreen';
 import {PlaylistsScreen} from './screens/PlaylistsScreen';
 import {PlaylistDetailScreen} from './screens/PlaylistDetailScreen';
 import {FavoritesScreen} from './screens/FavoritesScreen';
@@ -73,6 +74,16 @@ function TabNavigator({onOpenPlayer}: {onOpenPlayer: () => void}) {
             title: 'Buscar',
             tabBarIcon: ({color, size}) => (
               <Icon name="search" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="YouTube"
+          component={YouTubeSearchScreen}
+          options={{
+            title: 'YouTube',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="logo-youtube" size={size} color={color} />
             ),
           }}
         />
