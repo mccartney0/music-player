@@ -14,7 +14,7 @@ import {TrackItem} from '../components/TrackItem';
 import {playTrack} from '../hooks/useTrackPlayer';
 
 export function HomeScreen() {
-  const {tracks, setTracks, currentTrack, setCurrentTrack, setIsPlaying} =
+  const {tracks, setTracks, currentTrack, setCurrentTrack, setIsPlaying, shuffle} =
     usePlayerContext();
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -38,7 +38,7 @@ export function HomeScreen() {
   const handlePlay = async (track: typeof tracks[0]) => {
     setCurrentTrack(track);
     setIsPlaying(true);
-    await playTrack(track, tracks);
+    await playTrack(track, tracks, shuffle);
   };
 
   if (loading) {

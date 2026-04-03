@@ -8,7 +8,7 @@ import {TrackItem} from '../components/TrackItem';
 import {playTrack} from '../hooks/useTrackPlayer';
 
 export function FavoritesScreen() {
-  const {tracks, currentTrack, setCurrentTrack, setIsPlaying} =
+  const {tracks, currentTrack, setCurrentTrack, setIsPlaying, shuffle} =
     usePlayerContext();
   const {favorites} = useFavorites();
 
@@ -20,7 +20,7 @@ export function FavoritesScreen() {
   const handlePlay = async (track: typeof tracks[0]) => {
     setCurrentTrack(track);
     setIsPlaying(true);
-    await playTrack(track, favoriteTracks);
+    await playTrack(track, favoriteTracks, shuffle);
   };
 
   if (favoriteTracks.length === 0) {

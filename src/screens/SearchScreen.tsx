@@ -14,6 +14,7 @@ export function SearchScreen() {
     setSearchQuery,
     setCurrentTrack,
     setIsPlaying,
+    shuffle,
   } = usePlayerContext();
 
   const filteredTracks = useMemo(() => {
@@ -31,7 +32,7 @@ export function SearchScreen() {
     setCurrentTrack(track);
     setIsPlaying(true);
     const queue = filteredTracks.length > 0 ? filteredTracks : tracks;
-    await playTrack(track, queue);
+    await playTrack(track, queue, shuffle);
   };
 
   return (

@@ -12,7 +12,7 @@ export function PlaylistDetailScreen() {
   const route = useRoute<any>();
   const navigation = useNavigation();
   const playlist: Playlist = route.params?.playlist;
-  const {tracks, currentTrack, setCurrentTrack, setIsPlaying} =
+  const {tracks, currentTrack, setCurrentTrack, setIsPlaying, shuffle} =
     usePlayerContext();
   const {} = usePlaylists();
 
@@ -24,7 +24,7 @@ export function PlaylistDetailScreen() {
   const handlePlay = async (track: typeof tracks[0]) => {
     setCurrentTrack(track);
     setIsPlaying(true);
-    await playTrack(track, playlistTracks);
+    await playTrack(track, playlistTracks, shuffle);
   };
 
   return (

@@ -22,7 +22,7 @@ import {
   loadPlaylistsFromStorage,
   savePlaylistsToStorage,
 } from './store/playlistStore';
-import {useSetupPlayer, setRepeatMode} from './hooks/useTrackPlayer';
+import {useSetupPlayer, setRepeatMode, reshuffleQueue, restoreQueue} from './hooks/useTrackPlayer';
 import {usePlaybackState, useActiveTrack} from 'react-native-track-player';
 import {State} from 'react-native-track-player';
 
@@ -151,8 +151,16 @@ export default function App() {
 
   // Player context
   const toggleShuffle = useCallback(() => {
-    setShuffle(prev => !prev);
-  }, []);
+    setShuffle(prev => {
+      const next = !prev;
+      if (next) {
+        reshuffleQueue(tracks);
+      } else {
+        restoreQueue(tracks);
+      }
+      return next;
+    });
+  }, [tracks]);
 
   const cycleRepeat = useCallback(() => {
     setRepeat(prev => {
