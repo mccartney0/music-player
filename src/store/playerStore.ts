@@ -10,6 +10,9 @@ export interface PlayerState {
   shuffle: boolean;
   repeat: RepeatMode;
   searchQuery: string;
+  sleepMinutes: number;
+  sleepEndTime: number | null;
+  crossfadeDuration: number;
 }
 
 export interface PlayerContextType extends PlayerState {
@@ -19,6 +22,8 @@ export interface PlayerContextType extends PlayerState {
   toggleShuffle: () => void;
   cycleRepeat: () => void;
   setSearchQuery: (query: string) => void;
+  setSleepTimer: (minutes: number) => void;
+  setCrossfadeDuration: (seconds: number) => void;
 }
 
 const defaultState: PlayerContextType = {
@@ -28,12 +33,17 @@ const defaultState: PlayerContextType = {
   shuffle: false,
   repeat: 'off',
   searchQuery: '',
+  sleepMinutes: 0,
+  sleepEndTime: null,
+  crossfadeDuration: 0,
   setTracks: () => {},
   setCurrentTrack: () => {},
   setIsPlaying: () => {},
   toggleShuffle: () => {},
   cycleRepeat: () => {},
   setSearchQuery: () => {},
+  setSleepTimer: () => {},
+  setCrossfadeDuration: () => {},
 };
 
 export const PlayerContext = React.createContext<PlayerContextType>(defaultState);

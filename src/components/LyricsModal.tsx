@@ -52,7 +52,7 @@ export function LyricsModal({visible, track, onClose}: Props) {
       }
 
       // Tenta buscar online
-      const fetched = await fetchLyrics(track.artist, track.title);
+      const fetched = await fetchLyrics(track.id, track.artist, track.title);
       if (fetched) {
         setLyrics(fetched);
         setStatus('found');
