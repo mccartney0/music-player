@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ import {useFavorites} from '../store/favoritesStore';
 import {PlayerControls} from '../components/PlayerControls';
 import {ProgressBar} from '../components/ProgressBar';
 import {VolumeControl} from '../components/VolumeControl';
+import {LyricsModal} from '../components/LyricsModal';
 
 const {width} = Dimensions.get('window');
 const ARTWORK_SIZE = width - 80;
@@ -25,6 +26,7 @@ export function PlayerScreen() {
   const {currentTrack} = usePlayerContext();
   const {isFavorite, toggleFavorite} = useFavorites();
   const insets = useSafeAreaInsets();
+  const [lyricsOpen, setLyricsOpen] = useState(false);
 
   if (!currentTrack) return null;
 
@@ -75,6 +77,19 @@ export function PlayerScreen() {
       <ProgressBar />
       <PlayerControls />
       <VolumeControl />
+
+      <TouchableOpacity
+        onPress={() => setLyricsOpen(true)}
+        style={styles.lyricsBtn}>
+        <Icon name="document-text-outline" size={16} color={colors.textMuted} />
+        <Text style={styles.lyricsBtnText}>Letra</Text>
+      </TouchableOpacity>
+
+      <LyricsModal
+        visible={lyricsOpen}
+        track={currentTrack}
+        onClose={() => setLyricsOpen(false)}
+      />
     </View>
   );
 }
@@ -128,5 +143,17 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 16,
     marginTop: 4,
+  },
+  lyricsBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 10,
+  },
+  lyricsBtnText: {
+    color: colors.textMuted,
+    fontSize: 13,
+    fontWeight: '600',
   },
 });
