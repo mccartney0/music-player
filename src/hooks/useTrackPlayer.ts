@@ -35,6 +35,9 @@ async function setupPlayer() {
         Capability.SkipToNext,
         Capability.SkipToPrevious,
       ],
+      // Configurar reproducao em segundo plano (com tela bloqueada)
+      alwaysPauseOnInterruption: false,
+      progressUpdateEventInterval: 1000,
     });
     isSetup = true;
   } catch {
