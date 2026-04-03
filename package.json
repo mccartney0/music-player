@@ -5,6 +5,9 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "build": "npm run build:android:apk",
+    "build:android:apk": "cd android && gradlew.bat assembleRelease",
+    "build:android:aab": "cd android && gradlew.bat bundleRelease",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
